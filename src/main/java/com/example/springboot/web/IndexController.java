@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class IndexController {
 
@@ -15,6 +17,9 @@ public class IndexController {
 
     @Autowired
     private IndexDemo test;
+
+    @Autowired
+    private HttpServletRequest request;
 
     /**
      * 测试@Value和@ConfigurationProperties注解
@@ -32,17 +37,16 @@ public class IndexController {
      */
     @RequestMapping("index/{age}")
     public String getIndex(@PathVariable String age){
-        return dev+"--->"+age;
+        return dev+"--将会被拦截-->"+age;
     }
 
     /**
      * 未登录访问其他接口,则跳转此接口
-     * @param name
      * @return
      */
-    @RequestMapping("error/{name}")
-    public String getError(@PathVariable String name){
-        return name+"error";
+    @RequestMapping("/get-error")
+    public String getErrorMessage(){
+        return dev+"被拦截后重定向的报错接口!";
     }
 
     /**
@@ -52,7 +56,8 @@ public class IndexController {
      */
     @RequestMapping("login/{name}")
     public String getLogin(@PathVariable String name){
-        return name+"login";
+        request.getSession().setAttribute("name",name);
+        return name+"---->login,登陆接口不被拦截!";
     }
 
 }
