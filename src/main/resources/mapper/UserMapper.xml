@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboot.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.springboot.model.entity.User" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="serial" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="business_account" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="notice_way" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="level" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="is_delete" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.springboot.model.entity.User" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="serial" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="business_account" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="notice_way" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="level" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modify_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modify_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="is_delete" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="description" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, serial, business_account, name, notice_way, level, create_by, create_time, modify_by, 
+    modify_time, is_delete
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dev_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dev_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.springboot.model.entity.User" >
+    insert into dev_user (id, serial, business_account, 
+      name, notice_way, level, 
+      create_by, create_time, modify_by, 
+      modify_time, is_delete, description
+      )
+    values (#{id,jdbcType=INTEGER}, #{serial,jdbcType=VARCHAR}, #{businessAccount,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{noticeWay,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.springboot.model.entity.User" >
+    insert into dev_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="serial != null" >
+        serial,
+      </if>
+      <if test="businessAccount != null" >
+        business_account,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="noticeWay != null" >
+        notice_way,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyBy != null" >
+        modify_by,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serial != null" >
+        #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAccount != null" >
+        #{businessAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeWay != null" >
+        #{noticeWay,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.springboot.model.entity.User" >
+    update dev_user
+    <set >
+      <if test="serial != null" >
+        serial = #{serial,jdbcType=VARCHAR},
+      </if>
+      <if test="businessAccount != null" >
+        business_account = #{businessAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeWay != null" >
+        notice_way = #{noticeWay,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modify_by = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.springboot.model.entity.User" >
+    update dev_user
+    set serial = #{serial,jdbcType=VARCHAR},
+      business_account = #{businessAccount,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      notice_way = #{noticeWay,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.springboot.model.entity.User" >
+    update dev_user
+    set serial = #{serial,jdbcType=VARCHAR},
+      business_account = #{businessAccount,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      notice_way = #{noticeWay,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
