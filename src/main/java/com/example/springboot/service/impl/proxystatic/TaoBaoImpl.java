@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *@ClassName TaoBaoImpl
- *@Description  tb商家代理金士顿u盘的销售
+ *@Description  tb商家代理金士顿u盘的销售(代理类)
  *@Author zhutao
  *@Date 2020/12/19 15:29
  *@Version 1.0
@@ -40,7 +40,7 @@ public class TaoBaoImpl implements ProxyStaticService {
     @Override
     public int sellUsb(int amount) {
         //向厂家发送订单,厂家发货给商家,这里amount没啥用,不用管
-        //获得厂家的出厂价
+        //调用厂家销售方法,获得厂家的出厂价(调用目标类中的方法)
 //        int price = kingsdFactory.sellUsb(amount);
         int price = toshibaFactory.sellUsb(amount);
         //商家加价卖给消费者

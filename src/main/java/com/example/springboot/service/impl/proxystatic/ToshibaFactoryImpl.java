@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *@ClassName ToshibaFactoryImpl
- *@Description 东芝u盘厂家
+ *@Description 东芝u盘厂家(目标类)
  *@Author zhutao
  *@Date 2020/12/19 16:06
  *@Version 1.0

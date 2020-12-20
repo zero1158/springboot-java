@@ -1,4 +1,4 @@
-package com.example.springboot.service.impl.proxystatic;
+package com.example.springboot.service.impl.proxydynamic;
 /**
  * Licensed to CMSR,Inc. under the terms of the CMSR
  * Software License version 1.0.
@@ -7,32 +7,31 @@ package com.example.springboot.service.impl.proxystatic;
  * information regarding copyright ownership.
  * ----------------------------------------------------------------------------
  * Date               Author               Version              Comments
- * 2020/12/19          zhutao                 1.0            Initial Version
+ * 2020/12/20          zhutao                 1.0            Initial Version
  **/
 
-import com.example.springboot.service.ProxyStaticService;
+import com.example.springboot.service.ProxyDymanicService;
 import org.springframework.stereotype.Service;
 
 /**
- *@ClassName KingsdFactoryImpl
- *@Description 金士顿厂家作为目标类销售u盘(目标类)
+ *@ClassName SamsungFactory
+ *@Description 三星u盘厂家(动态代理中的目标类)
  *@Author zhutao
- *@Date 2020/12/19 15:26
+ *@Date 2020/12/20 11:13
  *@Version 1.0
  **/
 @Service
-public class KingsdFactoryImpl implements ProxyStaticService {
+public class SamsungFactoryServiceImpl implements ProxyDymanicService {
 
     /**
-     * 金士顿u盘厂家
+     * 三星厂家(目标类) ->销售u盘的行为
      * @param amount
      * @return
      */
     @Override
     public int sellUsb(int amount) {
-        System.out.println("========>厂家卖u盘给淘宝商家");
-        //出厂价格
-        int price = 85;
+        System.out.println("=========================目标类中方法执行======================");
+        int price = amount * 100;
         return price;
     }
 }
