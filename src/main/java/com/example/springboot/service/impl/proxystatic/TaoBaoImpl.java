@@ -1,4 +1,4 @@
-package com.example.springboot.service.impl;
+package com.example.springboot.service.impl.proxystatic;
 /**
  * Licensed to CMSR,Inc. under the terms of the CMSR
  * Software License version 1.0.
@@ -10,7 +10,7 @@ package com.example.springboot.service.impl;
  * 2020/12/19          zhutao                 1.0            Initial Version
  **/
 
-import com.example.springboot.service.ProxyStatic;
+import com.example.springboot.service.ProxyStaticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  *@Version 1.0
  **/
 @Service
-public class TaoBaoImpl implements ProxyStatic {
+public class TaoBaoImpl implements ProxyStaticService {
 
     //声明具体代理的厂家是金士顿u盘
     @Autowired

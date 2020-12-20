@@ -10,7 +10,7 @@ package com.example.springboot.web;
  * 2020/12/19          zhutao                 1.0            Initial Version
  **/
 
-import com.example.springboot.service.impl.TaoBaoImpl;
+import com.example.springboot.service.impl.proxystatic.TaoBaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *@ClassName ProxyStaticController
- *@Description TODO
+ *@Description 静态代理实现类
  *@Author zhutao
  *@Date 2020/12/19 15:38
  *@Version 1.0
