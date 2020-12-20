@@ -10,7 +10,6 @@ package com.example.springboot.config;
  * 2020/12/18          zhutao                 1.0            Initial Version
  **/
 
-import com.example.springboot.interceptor.IndexInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -27,9 +26,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new IndexInterceptor())
-                .addPathPatterns("/**")
-                //配置忽略拦截的接口
-                .excludePathPatterns("/login/{*}","/get-error");
+//        registry.addInterceptor(new IndexInterceptor())
+//                .addPathPatterns("/**")
+//                //配置忽略拦截的接口
+//                .excludePathPatterns("/login/{*}","/get-error")
+        ;
     }
 }
